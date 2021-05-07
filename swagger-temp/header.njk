@@ -1,0 +1,26 @@
+/* eslint-disable */
+
+/**
+{%- if apiData.info.title %}
+ * {{ apiData.info.title | safe }}
+ *
+{%- endif %}
+{%- if apiData.info.description %}
+ * {{ apiData.info.description | safe }}
+ *
+{%- endif %}
+{%- if apiData.info.version %}
+ * 接口版本：{{ apiData.info.version | safe }}
+{%- endif %}
+{%- if apiData.swagger %}
+ * Swagger {{ apiData.swagger | safe }}
+{%- endif %}
+{%- if apiData.openapi %}
+ * OpenApi {{ apiData.openapi | safe }}
+{%- endif %}
+ * 代码生成时间：{{ codeGenTime }}
+ *
+ * ⚠️: 本文件是由工具自动生成，不要手动修改
+ * - https://www.npmjs.com/package/swagger-codegen-ts
+ * - http://172.26.1.194/dtfe/swagger-codegen-ts
+ */

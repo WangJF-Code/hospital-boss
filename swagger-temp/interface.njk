@@ -1,0 +1,26 @@
+{% include "header.njk" %}
+
+declare namespace {{ namespace }} {
+  {% for type in list -%}
+{%- if type.props.length %}
+  type {{ type.typeName | safe }}{{ '' if type.parent === undefined else ' extends ' + type.parent }} = {
+    {%- for prop in type.props %}
+    {%- if prop.desc %}
+    /** {{ prop.desc }} */
+    {%- endif %}
+    {%- if prop.name === 'code' %}
+    code: number;
+    {%- elif prop.name === 'message' %}
+    message: string;
+    {%- elif prop.name === 'data' %}
+    data: {{ prop.type | required | safe }};
+    {%- else %}
+    '{{ prop.name }}'{{ '' if prop.required else '?' }}: {{ prop.type | safe }};
+    {%- endif %}
+    {%- endfor %}
+  }
+{%- else %}
+  type {{ type.typeName | safe }} = {{ type.type }};
+{%- endif %}
+{% endfor %}
+}

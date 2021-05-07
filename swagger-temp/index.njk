@@ -1,0 +1,5 @@
+{% include "header.njk" %}
+
+{% for fileName in list -%}
+export * from './{{ fileName }}'
+{% endfor -%}
